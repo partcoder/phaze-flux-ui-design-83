@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Calendar, Users, Tag, Mail, Share, Copy, Check } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
@@ -21,9 +20,13 @@ const CompetitionsSection = () => {
   ];
 
   const handleEmailParticipation = (compName: string) => {
-    const subject = `Combat Request: ${compName}`;
-    const body = `Greetings QuantumGrid Command,\n\nI request deployment to ${compName}. Provide tactical briefing and engagement protocols.\n\nAwaiting orders.`;
-    window.location.href = `mailto:abcd@quantumgrid.tech?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    if (compName === 'CodeCrush 2025') {
+      window.open('/codecrush2025', '_blank');
+    } else {
+      const subject = `Combat Request: ${compName}`;
+      const body = `Greetings QuantumGrid Command,\n\nI request deployment to ${compName}. Provide tactical briefing and engagement protocols.\n\nAwaiting orders.`;
+      window.location.href = `mailto:abcd@quantumgrid.tech?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
   };
 
   const handleShareCompetition = async (comp: any) => {
