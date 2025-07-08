@@ -1,5 +1,7 @@
+
 import React, { useState } from 'react';
-import { Calendar, Users, Tag, Mail } from 'lucide-react';
+import { Calendar, Users, Tag, Mail, Share } from 'lucide-react';
+import { toast } from '@/components/ui/use-toast';
 
 const CompetitionsSection = () => {
   const [activeTab, setActiveTab] = useState('interschool');
@@ -9,6 +11,7 @@ const CompetitionsSection = () => {
   const competitions = {
     interschool: [
       {
+        id: 'codecrush2024',
         name: 'CodeCrush 2024',
         type: 'Hackathon',
         grades: '11-12',
@@ -19,6 +22,7 @@ const CompetitionsSection = () => {
         hostedBy: 'Oscorp Inc.'
       },
       {
+        id: 'techquizmaster',
         name: 'TechQuiz Master',
         type: 'Quiz',
         grades: '9-10',
@@ -29,6 +33,7 @@ const CompetitionsSection = () => {
         hostedBy: 'Wayne Enterprises'
       },
       {
+        id: 'webdevchallenge',
         name: 'WebDev Challenge',
         type: 'Development',
         grades: '11-12',
@@ -39,6 +44,7 @@ const CompetitionsSection = () => {
         hostedBy: 'Stark Industries'
       },
       {
+        id: 'votechhackathon',
         name: 'Votech Hackathon',
         type: 'Hackathon',
         grades: '11-12',
@@ -49,6 +55,7 @@ const CompetitionsSection = () => {
         hostedBy: 'LexCorp'
       },
       {
+        id: 'incorpstudy',
         name: 'Incorp study',
         type: 'Case Study',
         grades: '11-12',
@@ -59,6 +66,7 @@ const CompetitionsSection = () => {
         hostedBy: 'Queen Industries'
       },
       {
+        id: 'osbornchallenge',
         name: 'Osborn Challenge',
         type: 'Programming',
         grades: '9-12',
@@ -71,6 +79,7 @@ const CompetitionsSection = () => {
     ],
     global: [
       {
+        id: 'internationalcodinglolympics',
         name: 'International Coding Olympics',
         type: 'Programming',
         grades: '9-12',
@@ -81,6 +90,7 @@ const CompetitionsSection = () => {
         hostedBy: 'Global Tech Foundation'
       },
       {
+        id: 'globalaichallenge',
         name: 'Global AI Challenge',
         type: 'Case Study',
         grades: '10-12',
@@ -109,21 +119,39 @@ const CompetitionsSection = () => {
 
   const handleEmailParticipation = (compName: string) => {
     const subject = `Request to participate in ${compName}`;
-    const body = `Hi pHaze Team,\n\nI would like to participate in ${compName}. Please provide me with more details.\n\nThanks!`;
-    window.location.href = `mailto:abcd@phaze.tech?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const body = `Hi QuantumGrid Team,\n\nI would like to participate in ${compName}. Please provide me with more details.\n\nThanks!`;
+    window.location.href = `mailto:abcd@quantumgrid.tech?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
+  const handleShareCompetition = (comp: any) => {
+    const url = `${window.location.origin}/competition/${comp.id}`;
+    
+    if (navigator.share) {
+      navigator.share({
+        title: comp.name,
+        text: `Check out ${comp.name} - ${comp.description}`,
+        url: url,
+      });
+    } else {
+      navigator.clipboard.writeText(url);
+      toast({
+        title: "Link Copied!",
+        description: `Share link for ${comp.name} has been copied to clipboard.`,
+      });
+    }
   };
 
   const filteredCompetitions = filterCompetitions(competitions[activeTab]);
 
   return (
     <section id="competitions" className="py-24 relative overflow-hidden">
-      {/* Background decorative elements - updated to royal green colors */}
-      <div className="absolute top-0 right-1/4 w-80 h-80 bg-emerald-500/8 rounded-full blur-3xl animate-morph"></div>
-      <div className="absolute bottom-1/4 left-1/3 w-60 h-60 bg-teal-500/10 rounded-full blur-2xl animate-float"></div>
+      {/* Background decorative elements - updated to fiery red colors */}
+      <div className="absolute top-0 right-1/4 w-80 h-80 bg-red-500/8 rounded-full blur-3xl animate-morph"></div>
+      <div className="absolute bottom-1/4 left-1/3 w-60 h-60 bg-orange-500/10 rounded-full blur-2xl animate-float"></div>
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-5xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent mb-4">
+          <h2 className="text-5xl md:text-5xl font-bold bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent mb-4">
             Competitions
           </h2>
           <p className="text-white/80 text-xl">
@@ -131,14 +159,14 @@ const CompetitionsSection = () => {
           </p>
         </div>
 
-        {/* Enhanced Toggle Tabs - updated to royal green colors */}
+        {/* Enhanced Toggle Tabs - updated to fiery red colors */}
         <div className="flex justify-center mb-16">
           <div className="glass-morphism-strong rounded-full p-3">
             <button
               onClick={() => setActiveTab('interschool')}
               className={`px-8 py-4 rounded-full font-medium transition-all duration-500 ripple-effect ${
                 activeTab === 'interschool'
-                  ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg'
+                  ? 'bg-gradient-to-r from-red-500 to-orange-500 text-white shadow-lg'
                   : 'text-white/70 hover:text-white hover:bg-white/10'
               }`}
             >
@@ -148,7 +176,7 @@ const CompetitionsSection = () => {
               onClick={() => setActiveTab('global')}
               className={`px-8 py-4 rounded-full font-medium transition-all duration-500 ripple-effect ${
                 activeTab === 'global'
-                  ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg'
+                  ? 'bg-gradient-to-r from-red-500 to-orange-500 text-white shadow-lg'
                   : 'text-white/70 hover:text-white hover:bg-white/10'
               }`}
             >
@@ -162,7 +190,7 @@ const CompetitionsSection = () => {
           <select
             value={selectedGrade}
             onChange={(e) => setSelectedGrade(e.target.value)}
-            className="glass-morphism rounded-2xl px-6 py-3 text-white border-0 focus:ring-2 focus:ring-emerald-400"
+            className="glass-morphism rounded-2xl px-6 py-3 text-white border-0 focus:ring-2 focus:ring-red-400"
           >
             <option value="all" className="text-black">All Grades</option>
             <option value="9-10" className="text-black">Grades 9-10</option>
@@ -171,7 +199,7 @@ const CompetitionsSection = () => {
           <select
             value={selectedType}
             onChange={(e) => setSelectedType(e.target.value)}
-            className="glass-morphism rounded-2xl px-6 py-3 text-white border-0 focus:ring-2 focus:ring-emerald-400"
+            className="glass-morphism rounded-2xl px-6 py-3 text-white border-0 focus:ring-2 focus:ring-red-400"
           >
             <option value="all" className="text-black">All Types</option>
             <option value="Hackathon" className="text-black">Hackathon</option>
@@ -182,7 +210,7 @@ const CompetitionsSection = () => {
           </select>
         </div>
 
-        {/* Enhanced Competition Cards - updated to royal green colors */}
+        {/* Enhanced Competition Cards - updated to fiery red colors */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {filteredCompetitions.length > 0 ? (
             filteredCompetitions.map((comp, index) => (
@@ -192,15 +220,15 @@ const CompetitionsSection = () => {
                 style={{ animationDelay: `${index * 150}ms` }}
               >
                 <div className="flex items-center justify-between mb-6">
-                  <span className="px-4 py-2 glass-morphism rounded-full text-emerald-400 text-sm font-medium group-hover:text-teal-400 transition-all duration-300">
+                  <span className="px-4 py-2 glass-morphism rounded-full text-red-400 text-sm font-medium group-hover:text-orange-400 transition-all duration-300">
                     {comp.type}
                   </span>
-                  <span className="px-4 py-2 glass-morphism rounded-full text-teal-400 text-sm font-medium group-hover:text-emerald-400 transition-all duration-300">
+                  <span className="px-4 py-2 glass-morphism rounded-full text-orange-400 text-sm font-medium group-hover:text-red-400 transition-all duration-300">
                     {comp.domain}
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-4 group-hover:text-teal-400 transition-colors duration-300">
+                <h3 className="text-xl font-bold text-white mb-4 group-hover:text-orange-400 transition-colors duration-300">
                   {comp.name}
                 </h3>
 
@@ -214,29 +242,37 @@ const CompetitionsSection = () => {
 
                 <div className="space-y-3 mb-8">
                   <div className="flex items-center text-white/70 text-sm">
-                    <Users size={16} className="mr-3 text-emerald-400" />
+                    <Users size={16} className="mr-3 text-red-400" />
                     Grades {comp.grades}
                   </div>
                   <div className="flex items-center text-white/70 text-sm">
-                    <Calendar size={16} className="mr-3 text-teal-400" />
+                    <Calendar size={16} className="mr-3 text-orange-400" />
                     {comp.date}
                   </div>
-                  <div className="flex items-center text-emerald-400 text-sm">
+                  <div className="flex items-center text-red-400 text-sm">
                     <Tag size={16} className="mr-3" />
                     Deadline: {comp.deadline}
                   </div>
                 </div>
 
-                <button
-                  onClick={() => handleEmailParticipation(comp.name)}
-                  className="w-full interactive-glow group flex items-center justify-center gap-3 glass-morphism-strong rounded-2xl py-4 font-medium text-white hover:scale-105 transition-all duration-300 ripple-effect group-hover:bg-gradient-to-r group-hover:from-emerald-500/20 group-hover:to-teal-500/20"
-                >
-                  <Mail size={18} />
-                  Email to Participate
-                </button>
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => handleEmailParticipation(comp.name)}
+                    className="flex-1 interactive-glow group flex items-center justify-center gap-3 glass-morphism-strong rounded-2xl py-4 font-medium text-white hover:scale-105 transition-all duration-300 ripple-effect group-hover:bg-gradient-to-r group-hover:from-red-500/20 group-hover:to-orange-500/20"
+                  >
+                    <Mail size={18} />
+                    Join
+                  </button>
+                  <button
+                    onClick={() => handleShareCompetition(comp)}
+                    className="interactive-glow group flex items-center justify-center gap-3 glass-morphism-strong rounded-2xl px-4 py-4 font-medium text-white hover:scale-105 transition-all duration-300 ripple-effect group-hover:bg-gradient-to-r group-hover:from-orange-500/20 group-hover:to-red-500/20"
+                  >
+                    <Share size={18} />
+                  </button>
+                </div>
 
-                {/* Decorative corner element - updated to royal green colors */}
-                <div className="absolute top-2 right-2 w-2 h-2 bg-emerald-400/40 rounded-full animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                {/* Decorative corner element - updated to fiery red colors */}
+                <div className="absolute top-2 right-2 w-2 h-2 bg-red-400/40 rounded-full animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
             ))
           ) : (

@@ -19,8 +19,8 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <div className="text-3xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent animate-pulse">
-              pHaze
+            <div className="text-3xl font-bold bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent animate-pulse">
+              QuantumGrid
             </div>
           </div>
 
@@ -31,10 +31,10 @@ const Navbar = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-white/80 hover:text-emerald-400 px-6 py-3 text-sm font-medium transition-all duration-300 relative group rounded-full hover:bg-white/10 ripple-effect"
+                  className="text-white/80 hover:text-red-400 px-6 py-3 text-sm font-medium transition-all duration-300 relative group rounded-full hover:bg-white/10 ripple-effect"
                 >
                   {item.name}
-                  <span className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-emerald-400 to-teal-400 group-hover:w-8 transition-all duration-300 rounded-full"></span>
+                  <span className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-400 to-orange-400 group-hover:w-8 transition-all duration-300 rounded-full"></span>
                 </a>
               ))}
             </div>
@@ -44,7 +44,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-white/80 hover:text-emerald-400 p-3 rounded-full hover:bg-white/10 ripple-effect transition-all duration-300"
+              className="text-white/80 hover:text-red-400 p-3 rounded-full hover:bg-white/10 ripple-effect transition-all duration-300"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -59,7 +59,7 @@ const Navbar = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-white/80 hover:text-emerald-400 block px-6 py-4 text-base font-medium transition-all duration-300 rounded-2xl hover:bg-white/10 ripple-effect"
+                  className="text-white/80 hover:text-red-400 block px-6 py-4 text-base font-medium transition-all duration-300 rounded-2xl hover:bg-white/10 ripple-effect"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
