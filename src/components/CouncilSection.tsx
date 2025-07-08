@@ -91,11 +91,11 @@ const CouncilSection = () => {
         {(filter === 'all' || filter === 'leadership') && (
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-yellow-400 mb-8 text-center">Founder</h3>
-            <div className="grid md:grid-cols-1 gap-8 max-w-2xl mx-auto">
+            <div className="grid md:grid-cols-1 gap-8 max-w-md mx-auto">
               {councilMembers.founders.map((member, index) => (
                 <div
                   key={member.name}
-                  className="backdrop-blur-md bg-white/10 interactive-gold-glow group border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-500 transform hover:scale-105"
+                  className="backdrop-blur-md bg-white/10 interactive-gold-glow group border border-white/20 rounded-3xl p-6 hover:bg-white/20 transition-all duration-500 transform hover:scale-105"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="text-center">
@@ -124,11 +124,11 @@ const CouncilSection = () => {
         {(filter === 'all' || filter === 'leadership') && (
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-teal-400 mb-8 text-center">Leadership</h3>
-            <div className="grid md:grid-cols-1 gap-8 max-w-2xl mx-auto">
+            <div className="grid md:grid-cols-1 gap-8 max-w-md mx-auto">
               {councilMembers.leadership.map((member, index) => (
                 <div
                   key={member.name}
-                  className="backdrop-blur-md bg-white/10 interactive-blue-glow border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-500 transform hover:scale-105"
+                  className="backdrop-blur-md bg-white/10 interactive-blue-glow border border-white/20 rounded-3xl p-6 hover:bg-white/20 transition-all duration-500 transform hover:scale-105"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="text-center">
@@ -157,11 +157,11 @@ const CouncilSection = () => {
         {(filter === 'all' || filter === 'leads') && (
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-green-400 mb-8 text-center">Department Leads</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
               {councilMembers.leads.map((member, index) => (
                 <div
                   key={member.name}
-                  className="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-all duration-500 transform hover:scale-105"
+                  className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-4 hover:bg-white/10 transition-all duration-500 transform hover:scale-105"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="text-center">

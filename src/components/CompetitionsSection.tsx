@@ -174,7 +174,7 @@ const CompetitionsSection = () => {
           </select>
         </div>
 
-        <div className="grid md:grid-cols-1 lg:grid-cols-1 gap-10 max-w-2xl mx-auto">
+        <div className="grid md:grid-cols-1 lg:grid-cols-1 gap-10 max-w-xl mx-auto">
           {filteredCompetitions.length > 0 ? (
             filteredCompetitions.map((comp, index) => (
               <div
