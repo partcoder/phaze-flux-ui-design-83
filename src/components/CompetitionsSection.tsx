@@ -126,14 +126,21 @@ const CompetitionsSection = () => {
   const handleShareCompetition = (comp: any) => {
     const url = `${window.location.origin}/competition/${comp.id}`;
     
-    if (navigator.share) {
-      navigator.share({
-        title: comp.name,
-        text: `Check out ${comp.name} - ${comp.description}`,
-        url: url,
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).then(() => {
+        toast({
+          title: "Link Copied!",
+          description: `Share link for ${comp.name} has been copied to clipboard.`,
+        });
       });
     } else {
-      navigator.clipboard.writeText(url);
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = url;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
       toast({
         title: "Link Copied!",
         description: `Share link for ${comp.name} has been copied to clipboard.`,
@@ -144,7 +151,7 @@ const CompetitionsSection = () => {
   const filteredCompetitions = filterCompetitions(competitions[activeTab]);
 
   return (
-    <section id="competitions" className="py-24 relative overflow-hidden">
+    <section id="competitions" className="py-24 relative overflow-hidden z-10">
       {/* Background decorative elements - updated to fiery red colors */}
       <div className="absolute top-0 right-1/4 w-80 h-80 bg-red-500/8 rounded-full blur-3xl animate-morph"></div>
       <div className="absolute bottom-1/4 left-1/3 w-60 h-60 bg-orange-500/10 rounded-full blur-2xl animate-float"></div>

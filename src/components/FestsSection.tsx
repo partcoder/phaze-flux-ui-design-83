@@ -1,10 +1,12 @@
 
 import React from 'react';
-import { Calendar, Users, Building, Mail } from 'lucide-react';
+import { Calendar, Users, Building, Mail, Share } from 'lucide-react';
+import { toast } from '@/components/ui/use-toast';
 
 const FestsSection = () => {
   const fests = [
     {
+      id: 'techfusion2025',
       name: 'TechFusion 2025',
       type: 'Team',
       collab: 'Delhi Public School',
@@ -14,6 +16,7 @@ const FestsSection = () => {
       poster: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=400&h=300&fit=crop'
     },
     {
+      id: 'innovatetech2025',
       name: 'InnovateTech Summit',
       type: 'Solo',
       collab: 'Ryan International',
@@ -23,6 +26,7 @@ const FestsSection = () => {
       poster: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop'
     },
     {
+      id: 'codecarnival2025',
       name: 'CodeCarnival',
       type: 'Team',
       collab: 'Modern School',
@@ -39,8 +43,33 @@ const FestsSection = () => {
     window.location.href = `mailto:abcd@quantumgrid.tech?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
+  const handleShareFest = (fest: any) => {
+    const url = `${window.location.origin}/fest/${fest.id}`;
+    
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).then(() => {
+        toast({
+          title: "Link Copied!",
+          description: `Share link for ${fest.name} has been copied to clipboard.`,
+        });
+      });
+    } else {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = url;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      toast({
+        title: "Link Copied!",
+        description: `Share link for ${fest.name} has been copied to clipboard.`,
+      });
+    }
+  };
+
   return (
-    <section id="fests" className="py-20 relative">
+    <section id="fests" className="py-20 relative z-10">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent mb-4">
@@ -55,7 +84,7 @@ const FestsSection = () => {
           {fests.map((fest, index) => (
             <div
               key={fest.name}
-              className="backdrop-blur-md interactive-glow group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-red-500/10"
+              className="glass-morphism-strong interactive-glow group rounded-2xl overflow-hidden hover:scale-105 transition-all duration-500 transform hover:shadow-2xl hover:shadow-red-500/20"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Poster Image */}
@@ -65,7 +94,7 @@ const FestsSection = () => {
                   alt={fest.name}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                 <div className="absolute top-4 right-4">
                   <span className={`px-3 py-1 rounded-full text-sm font-medium ${
                     fest.type === 'Team' 
@@ -101,13 +130,21 @@ const FestsSection = () => {
                   </div>
                 </div>
 
-                <button
-                  onClick={() => handleJoinRequest(fest.name)}
-                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-red-500 to-orange-500 text-white font-medium py-3 rounded-full hover:shadow-lg hover:shadow-red-500/25 transition-all duration-300"
-                >
-                  <Mail size={16} />
-                  Request to Join
-                </button>
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => handleJoinRequest(fest.name)}
+                    className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-red-500 to-orange-500 text-white font-medium py-3 rounded-full hover:shadow-lg hover:shadow-red-500/25 transition-all duration-300"
+                  >
+                    <Mail size={16} />
+                    Request to Join
+                  </button>
+                  <button
+                    onClick={() => handleShareFest(fest)}
+                    className="flex items-center justify-center gap-2 glass-morphism-strong rounded-full px-4 py-3 font-medium text-white hover:scale-105 transition-all duration-300"
+                  >
+                    <Share size={16} />
+                  </button>
+                </div>
               </div>
             </div>
           ))}
