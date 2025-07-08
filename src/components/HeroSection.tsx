@@ -56,7 +56,7 @@ const HeroSection = () => {
             className="inline-block px-12 py-5 glass-morphism-strong text-lg font-semibold text-white hover:scale-105 transition-all duration-500 ripple-effect interactive-red-glow group tech-border circuit-lines"
           >
             <span className="bg-gradient-to-r from-red-400 to-red-300 bg-clip-text text-transparent group-hover:from-red-300 group-hover:to-red-400 transition-all duration-300">
-              &gt; Initialize Combat Protocols
+              &gt; Competitions
             </span>
           </a>
         </div>
@@ -64,10 +64,10 @@ const HeroSection = () => {
         {/* Enhanced Tech Stats with circuit styling */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
-            { label: 'Active Nodes', value: '2+' },
-            { label: 'Battle Zones', value: '1+' },
-            { label: 'Command Units', value: '1' },
-            { label: 'Victories', value: '0' },
+            { label: 'Active Comps', value: '1' },
+            { label: 'Total Comps held', value: '5+' },
+            { label: 'Command Units', value: '4' },
+            { label: 'Lives Changed', value: '100+' },
           ].map((stat, index) => (
             <div
               key={stat.label}

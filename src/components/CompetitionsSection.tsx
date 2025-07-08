@@ -8,15 +8,15 @@ const CompetitionsSection = () => {
 
   const competitions = [
     {
-      id: 'codecrush2024',
-      name: 'CodeCrush 2024',
+      id: 'codecrush2025',
+      name: 'CodeCrush 2025',
       type: 'Hackathon',
-      grades: '11-12',
-      date: 'Dec 15, 2024',
-      deadline: 'Dec 10, 2024',
-      domain: 'AI/ML',
+      grades: '13+',
+      date: 'July 30, 2025',
+      deadline: 'July 23, 2025',
+      domain: 'Programming',
       description: 'Build AI solutions for real-world problems',
-      hostedBy: 'Oscorp Inc.'
+      hostedBy: 'QuantumGrid Co.'
     }
   ];
 
@@ -96,7 +96,7 @@ const CompetitionsSection = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-5xl font-bold bg-gradient-to-r from-red-400 to-red-300 bg-clip-text text-transparent mb-4 tech-border circuit-lines">
-            &gt; Combat Zones
+            &gt; Competitions
           </h2>
           <p className="text-red-100/80 text-xl">
             Select your battlefield and prove your digital superiority
@@ -139,7 +139,7 @@ const CompetitionsSection = () => {
               <div className="space-y-3 mb-8">
                 <div className="flex items-center text-red-100/70 text-sm">
                   <Users size={16} className="mr-3 text-red-400" />
-                  Clearance {comp.grades}
+                  Clearance :{comp.grades}
                 </div>
                 <div className="flex items-center text-red-100/70 text-sm">
                   <Calendar size={16} className="mr-3 text-red-300" />
@@ -147,7 +147,7 @@ const CompetitionsSection = () => {
                 </div>
                 <div className="flex items-center text-red-400 text-sm">
                   <Tag size={16} className="mr-3" />
-                  Deploy by: {comp.deadline}
+                  Deadline: {comp.deadline}
                 </div>
               </div>
 
