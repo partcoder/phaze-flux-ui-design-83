@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { Calendar, Users, Tag, Mail, Share } from 'lucide-react';
+import { Calendar, Users, Tag, Mail, Share, Terminal, Zap } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
 
 const CompetitionsSection = () => {
@@ -103,7 +102,6 @@ const CompetitionsSection = () => {
     ]
   };
 
-  // Filter competitions based on selected grade and type
   const filterCompetitions = (comps) => {
     return comps.filter(comp => {
       const gradeMatch = selectedGrade === 'all' || comp.grades === selectedGrade || 
@@ -118,8 +116,8 @@ const CompetitionsSection = () => {
   };
 
   const handleEmailParticipation = (compName: string) => {
-    const subject = `Request to participate in ${compName}`;
-    const body = `Hi QuantumGrid Team,\n\nI would like to participate in ${compName}. Please provide me with more details.\n\nThanks!`;
+    const subject = `Combat Request: ${compName}`;
+    const body = `Greetings QuantumGrid Command,\n\nI request deployment to ${compName}. Provide tactical briefing and engagement protocols.\n\nAwaiting orders.`;
     window.location.href = `mailto:abcd@quantumgrid.tech?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
@@ -129,8 +127,8 @@ const CompetitionsSection = () => {
     if (navigator.clipboard) {
       navigator.clipboard.writeText(url).then(() => {
         toast({
-          title: "Link Copied!",
-          description: `Share link for ${comp.name} has been copied to clipboard.`,
+          title: "Link Acquired",
+          description: `Combat zone coordinates for ${comp.name} copied to neural interface.`,
         });
       });
     } else {
@@ -142,8 +140,8 @@ const CompetitionsSection = () => {
       document.execCommand('copy');
       document.body.removeChild(textArea);
       toast({
-        title: "Link Copied!",
-        description: `Share link for ${comp.name} has been copied to clipboard.`,
+        title: "Link Acquired",
+        description: `Combat zone coordinates for ${comp.name} copied to neural interface.`,
       });
     }
   };
@@ -152,140 +150,153 @@ const CompetitionsSection = () => {
 
   return (
     <section id="competitions" className="py-24 relative overflow-hidden z-10">
-      {/* Background decorative elements - updated to fiery red colors */}
-      <div className="absolute top-0 right-1/4 w-80 h-80 bg-red-500/8 rounded-full blur-3xl animate-morph"></div>
-      <div className="absolute bottom-1/4 left-1/3 w-60 h-60 bg-orange-500/10 rounded-full blur-2xl animate-float"></div>
+      {/* Tech background elements */}
+      <div className="absolute top-0 right-1/4 w-80 h-80 bg-red-900/6 rounded-full blur-3xl animate-morph"></div>
+      <div className="absolute bottom-1/4 left-1/3 w-60 h-60 bg-red-800/8 rounded-full blur-2xl animate-float"></div>
+      
+      {/* Matrix overlay */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="w-full h-full bg-gradient-to-br from-red-900 via-transparent to-red-900"></div>
+      </div>
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-5xl font-bold bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent mb-4">
-            Competitions
+          <h2 className="text-5xl md:text-5xl font-bold bg-gradient-to-r from-red-400 to-red-300 bg-clip-text text-transparent mb-4 tech-border circuit-lines">
+            &gt; Combat Zones
           </h2>
-          <p className="text-white/80 text-xl">
-            Join exciting tech competitions and showcase your skills
+          <p className="text-red-100/80 text-xl">
+            Select your battlefield and prove your digital superiority
           </p>
         </div>
 
-        {/* Enhanced Toggle Tabs - updated to fiery red colors */}
+        {/* Enhanced Toggle Tabs */}
         <div className="flex justify-center mb-16">
-          <div className="glass-morphism-strong rounded-full p-3">
+          <div className="glass-morphism-strong rounded-lg p-3 tech-border circuit-lines">
             <button
               onClick={() => setActiveTab('interschool')}
-              className={`px-8 py-4 rounded-full font-medium transition-all duration-500 ripple-effect ${
+              className={`px-8 py-4 rounded-lg font-medium transition-all duration-500 ripple-effect relative ${
                 activeTab === 'interschool'
-                  ? 'bg-gradient-to-r from-red-500 to-orange-500 text-white shadow-lg'
-                  : 'text-white/70 hover:text-white hover:bg-white/10'
+                  ? 'bg-gradient-to-r from-red-600 to-red-500 text-white shadow-lg shadow-red-500/25'
+                  : 'text-red-100/70 hover:text-red-100 hover:bg-red-900/20'
               }`}
             >
-              Interschool
+              <Terminal className="inline-block mr-2" size={18} />
+              Local Network
             </button>
             <button
               onClick={() => setActiveTab('global')}
-              className={`px-8 py-4 rounded-full font-medium transition-all duration-500 ripple-effect ${
+              className={`px-8 py-4 rounded-lg font-medium transition-all duration-500 ripple-effect relative ${
                 activeTab === 'global'
-                  ? 'bg-gradient-to-r from-red-500 to-orange-500 text-white shadow-lg'
-                  : 'text-white/70 hover:text-white hover:bg-white/10'
+                  ? 'bg-gradient-to-r from-red-600 to-red-500 text-white shadow-lg shadow-red-500/25'
+                  : 'text-red-100/70 hover:text-red-100 hover:bg-red-900/20'
               }`}
             >
-              Global / Online
+              <Zap className="inline-block mr-2" size={18} />
+              Global Grid
             </button>
           </div>
         </div>
 
-        {/* Enhanced Filters - updated focus colors */}
+        {/* Enhanced Filters */}
         <div className="flex flex-wrap justify-center gap-6 mb-16">
           <select
             value={selectedGrade}
             onChange={(e) => setSelectedGrade(e.target.value)}
-            className="glass-morphism rounded-2xl px-6 py-3 text-white border-0 focus:ring-2 focus:ring-red-400"
+            className="glass-morphism-strong rounded-lg px-6 py-3 text-red-100 border-0 focus:ring-2 focus:ring-red-500 tech-border circuit-lines"
           >
-            <option value="all" className="text-black">All Grades</option>
-            <option value="9-10" className="text-black">Grades 9-10</option>
-            <option value="11-12" className="text-black">Grades 11-12</option>
+            <option value="all" className="text-black">All Threat Levels</option>
+            <option value="9-10" className="text-black">Levels 9-10</option>
+            <option value="11-12" className="text-black">Levels 11-12</option>
           </select>
           <select
             value={selectedType}
             onChange={(e) => setSelectedType(e.target.value)}
-            className="glass-morphism rounded-2xl px-6 py-3 text-white border-0 focus:ring-2 focus:ring-red-400"
+            className="glass-morphism-strong rounded-lg px-6 py-3 text-red-100 border-0 focus:ring-2 focus:ring-red-500 tech-border circuit-lines"
           >
-            <option value="all" className="text-black">All Types</option>
-            <option value="Hackathon" className="text-black">Hackathon</option>
-            <option value="Quiz" className="text-black">Quiz</option>
-            <option value="Development" className="text-black">Development</option>
-            <option value="Programming" className="text-black">Programming</option>
-            <option value="Case Study" className="text-black">Case Study</option>
+            <option value="all" className="text-black">All Combat Types</option>
+            <option value="Hackathon" className="text-black">Cyber Assault</option>
+            <option value="Quiz" className="text-black">Intel Gathering</option>
+            <option value="Development" className="text-black">System Build</option>
+            <option value="Programming" className="text-black">Code Combat</option>
+            <option value="Case Study" className="text-black">Strategic Analysis</option>
           </select>
         </div>
 
-        {/* Enhanced Competition Cards - updated to fiery red colors */}
+        {/* Enhanced Competition Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {filteredCompetitions.length > 0 ? (
             filteredCompetitions.map((comp, index) => (
               <div
                 key={comp.name}
-                className="glass-morphism-strong interactive-glow group rounded-3xl p-8 liquid-hover group relative overflow-hidden animate-float"
+                className="glass-morphism-strong interactive-glow group rounded-lg p-8 liquid-hover relative overflow-hidden animate-float tech-border circuit-lines"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
+                {/* Tech corner indicators */}
+                <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-red-500/50"></div>
+                <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-red-500/50"></div>
+                <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-red-500/50"></div>
+                <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-red-500/50"></div>
+                
                 <div className="flex items-center justify-between mb-6">
-                  <span className="px-4 py-2 glass-morphism rounded-full text-red-400 text-sm font-medium group-hover:text-orange-400 transition-all duration-300">
+                  <span className="px-4 py-2 glass-morphism rounded-lg text-red-400 text-sm font-medium group-hover:text-red-300 transition-all duration-300 uppercase tracking-wider">
                     {comp.type}
                   </span>
-                  <span className="px-4 py-2 glass-morphism rounded-full text-orange-400 text-sm font-medium group-hover:text-red-400 transition-all duration-300">
+                  <span className="px-4 py-2 glass-morphism rounded-lg text-red-300 text-sm font-medium group-hover:text-red-400 transition-all duration-300 uppercase tracking-wider">
                     {comp.domain}
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-4 group-hover:text-orange-400 transition-colors duration-300">
+                <h3 className="text-xl font-bold text-red-100 mb-4 group-hover:text-red-300 transition-colors duration-300 uppercase tracking-wider">
                   {comp.name}
                 </h3>
 
-                <p className="text-white/80 mb-4 text-sm leading-relaxed">
+                <p className="text-red-100/80 mb-4 text-sm leading-relaxed">
                   {comp.description}
                 </p>
 
-                <p className="text-white/40 text-xs mb-6 italic">
-                  Hosted by: {comp.hostedBy}
+                <p className="text-red-100/40 text-xs mb-6 italic">
+                  Command: {comp.hostedBy}
                 </p>
 
                 <div className="space-y-3 mb-8">
-                  <div className="flex items-center text-white/70 text-sm">
+                  <div className="flex items-center text-red-100/70 text-sm">
                     <Users size={16} className="mr-3 text-red-400" />
-                    Grades {comp.grades}
+                    Clearance {comp.grades}
                   </div>
-                  <div className="flex items-center text-white/70 text-sm">
-                    <Calendar size={16} className="mr-3 text-orange-400" />
+                  <div className="flex items-center text-red-100/70 text-sm">
+                    <Calendar size={16} className="mr-3 text-red-300" />
                     {comp.date}
                   </div>
                   <div className="flex items-center text-red-400 text-sm">
                     <Tag size={16} className="mr-3" />
-                    Deadline: {comp.deadline}
+                    Deploy by: {comp.deadline}
                   </div>
                 </div>
 
                 <div className="flex gap-3">
                   <button
                     onClick={() => handleEmailParticipation(comp.name)}
-                    className="flex-1 interactive-glow group flex items-center justify-center gap-3 glass-morphism-strong rounded-2xl py-4 font-medium text-white hover:scale-105 transition-all duration-300 ripple-effect group-hover:bg-gradient-to-r group-hover:from-red-500/20 group-hover:to-orange-500/20"
+                    className="flex-1 interactive-glow group flex items-center justify-center gap-3 glass-morphism-strong rounded-lg py-4 font-medium text-red-100 hover:scale-105 transition-all duration-300 ripple-effect group-hover:bg-gradient-to-r group-hover:from-red-600/20 group-hover:to-red-500/20 tech-border circuit-lines"
                   >
                     <Mail size={18} />
-                    Join
+                    DEPLOY
                   </button>
                   <button
                     onClick={() => handleShareCompetition(comp)}
-                    className="interactive-glow group flex items-center justify-center gap-3 glass-morphism-strong rounded-2xl px-4 py-4 font-medium text-white hover:scale-105 transition-all duration-300 ripple-effect group-hover:bg-gradient-to-r group-hover:from-orange-500/20 group-hover:to-red-500/20"
+                    className="interactive-glow group flex items-center justify-center gap-3 glass-morphism-strong rounded-lg px-4 py-4 font-medium text-red-100 hover:scale-105 transition-all duration-300 ripple-effect group-hover:bg-gradient-to-r group-hover:from-red-500/20 group-hover:to-red-600/20 tech-border circuit-lines"
                   >
                     <Share size={18} />
                   </button>
                 </div>
 
-                {/* Decorative corner element - updated to fiery red colors */}
-                <div className="absolute top-2 right-2 w-2 h-2 bg-red-400/40 rounded-full animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                {/* Status indicator */}
+                <div className="absolute top-4 right-8 w-2 h-2 bg-red-500/60 rounded-full animate-pulse"></div>
               </div>
             ))
           ) : (
             <div className="col-span-full text-center py-12">
-              <p className="text-white/60 text-lg">No competitions match your current filters.</p>
-              <p className="text-white/40 text-sm mt-2">Try adjusting your grade or type selection.</p>
+              <p className="text-red-100/60 text-lg">No combat zones match current parameters.</p>
+              <p className="text-red-100/40 text-sm mt-2">Adjust threat level or combat type selection.</p>
             </div>
           )}
         </div>
