@@ -35,13 +35,13 @@ const CodeCrush2025 = () => {
     },
     { 
       date: 'Aug 1', 
-      event: 'Submission Deadline (8:00 PM IST)',
+      event: 'Hackathon Ends - Submission Deadline (8:00 PM IST)',
       icon: <Clock className="w-5 h-5" />,
       color: 'from-red-500 to-pink-500'
     },
     { 
-      date: 'Aug 6', 
-      event: 'Winners + Feedback Announced',
+      date: 'Aug 15', 
+      event: 'Winners + Feedback Announced (via email)',
       icon: <Trophy className="w-5 h-5" />,
       color: 'from-pink-500 to-red-500'
     }
