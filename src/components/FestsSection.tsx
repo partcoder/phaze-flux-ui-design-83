@@ -1,9 +1,10 @@
-
-import React from 'react';
-import { Calendar, Users, Building, Mail, Share, Shield, Cpu } from 'lucide-react';
+import React, { useState } from 'react';
+import { Calendar, Users, Building, Mail, Share, Shield, Cpu, Copy, Check } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
 
 const FestsSection = () => {
+  const [copiedStates, setCopiedStates] = useState<Record<string, boolean>>({});
+
   const fests = [
     {
       id: 'techfusion2025',
@@ -43,28 +44,60 @@ const FestsSection = () => {
     window.location.href = `mailto:abcd@quantumgrid.tech?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
-  const handleShareFest = (fest: any) => {
-    const url = `${window.location.origin}/fest/${fest.id}`;
+  const handleShareFest = async (fest: any) => {
+    const shareData = {
+      name: fest.name,
+      type: fest.type,
+      collab: fest.collab,
+      date: fest.date,
+      deadline: fest.deadline,
+      description: fest.description
+    };
     
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(url).then(() => {
-        toast({
-          title: "Coordinates Acquired",
-          description: `Battlefield coordinates for ${fest.name} uploaded to neural interface.`,
-        });
+    const shareText = `🚀 WAR CAMPAIGN ALERT 🚀\n\n` +
+      `Operation: ${fest.name}\n` +
+      `Formation: ${fest.type} Mission\n` +
+      `Allied Forces: ${fest.collab}\n` +
+      `Battle Date: ${fest.date}\n` +
+      `Deployment Deadline: ${fest.deadline}\n\n` +
+      `Mission Brief: ${fest.description}\n\n` +
+      `Join QuantumGrid at: ${window.location.origin}/#fests\n` +
+      `#QuantumGrid #WarCampaign #${fest.type}Mission`;
+
+    try {
+      await navigator.clipboard.writeText(shareText);
+      setCopiedStates(prev => ({ ...prev, [fest.id]: true }));
+      
+      toast({
+        title: "⚡ Coordinates Acquired",
+        description: `Battlefield intel for ${fest.name} uploaded to neural interface.`,
       });
-    } else {
-      // Fallback for older browsers
+      
+      setTimeout(() => {
+        setCopiedStates(prev => ({ ...prev, [fest.id]: false }));
+      }, 2000);
+    } catch (err) {
+      console.error('Failed to copy to clipboard:', err);
+      
+      // Fallback method
       const textArea = document.createElement('textarea');
-      textArea.value = url;
+      textArea.value = shareText;
+      textArea.style.position = 'fixed';
+      textArea.style.opacity = '0';
       document.body.appendChild(textArea);
       textArea.select();
       document.execCommand('copy');
       document.body.removeChild(textArea);
+      
+      setCopiedStates(prev => ({ ...prev, [fest.id]: true }));
       toast({
-        title: "Coordinates Acquired",
-        description: `Battlefield coordinates for ${fest.name} uploaded to neural interface.`,
+        title: "⚡ Coordinates Acquired",
+        description: `Battlefield intel for ${fest.name} uploaded to neural interface.`,
       });
+      
+      setTimeout(() => {
+        setCopiedStates(prev => ({ ...prev, [fest.id]: false }));
+      }, 2000);
     }
   };
 
@@ -167,9 +200,19 @@ const FestsSection = () => {
                   </button>
                   <button
                     onClick={() => handleShareFest(fest)}
-                    className="flex items-center justify-center gap-2 glass-morphism-strong rounded-full px-4 py-3 font-medium text-red-100 hover:scale-105 transition-all duration-300 tech-border circuit-lines"
+                    className="flex items-center justify-center gap-2 glass-morphism-strong rounded-full px-4 py-3 font-medium text-red-100 hover:scale-105 transition-all duration-300 tech-border circuit-lines relative overflow-hidden group"
                   >
-                    <Share size={16} />
+                    {copiedStates[fest.id] ? (
+                      <>
+                        <Check size={16} className="text-green-400" />
+                        <div className="absolute inset-0 bg-green-500/20 animate-pulse rounded-full"></div>
+                      </>
+                    ) : (
+                      <>
+                        <Copy size={16} />
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-500/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                      </>
+                    )}
                   </button>
                 </div>
               </div>

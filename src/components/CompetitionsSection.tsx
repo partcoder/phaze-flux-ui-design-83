@@ -1,12 +1,12 @@
-
 import React, { useState } from 'react';
-import { Calendar, Users, Tag, Mail, Share, Terminal, Zap } from 'lucide-react';
+import { Calendar, Users, Tag, Mail, Share, Terminal, Zap, Copy, Check } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
 
 const CompetitionsSection = () => {
   const [activeTab, setActiveTab] = useState('interschool');
   const [selectedGrade, setSelectedGrade] = useState('all');
   const [selectedType, setSelectedType] = useState('all');
+  const [copiedStates, setCopiedStates] = useState<Record<string, boolean>>({});
 
   const competitions = {
     interschool: [
@@ -122,28 +122,61 @@ const CompetitionsSection = () => {
     window.location.href = `mailto:abcd@quantumgrid.tech?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
-  const handleShareCompetition = (comp: any) => {
-    const url = `${window.location.origin}/competition/${comp.id}`;
+  const handleShareCompetition = async (comp: any) => {
+    const shareData = {
+      name: comp.name,
+      type: comp.type,
+      domain: comp.domain,
+      date: comp.date,
+      deadline: comp.deadline,
+      description: comp.description,
+      hostedBy: comp.hostedBy
+    };
     
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(url).then(() => {
-        toast({
-          title: "Link Acquired",
-          description: `Combat zone coordinates for ${comp.name} copied to neural interface.`,
-        });
+    const shareText = `🔥 COMBAT ZONE ALERT 🔥\n\n` +
+      `Mission: ${comp.name}\n` +
+      `Classification: ${comp.type} | ${comp.domain}\n` +
+      `Deployment Date: ${comp.date}\n` +
+      `Registration Deadline: ${comp.deadline}\n` +
+      `Command: ${comp.hostedBy}\n\n` +
+      `Description: ${comp.description}\n\n` +
+      `Join QuantumGrid at: ${window.location.origin}/#competitions\n` +
+      `#QuantumGrid #TechWarfare #${comp.type.replace(/\s+/g, '')}`;
+
+    try {
+      await navigator.clipboard.writeText(shareText);
+      setCopiedStates(prev => ({ ...prev, [comp.id]: true }));
+      
+      toast({
+        title: "⚡ Link Acquired",
+        description: `Combat zone intel for ${comp.name} uploaded to neural interface.`,
       });
-    } else {
-      // Fallback for older browsers
+      
+      setTimeout(() => {
+        setCopiedStates(prev => ({ ...prev, [comp.id]: false }));
+      }, 2000);
+    } catch (err) {
+      console.error('Failed to copy to clipboard:', err);
+      
+      // Fallback method
       const textArea = document.createElement('textarea');
-      textArea.value = url;
+      textArea.value = shareText;
+      textArea.style.position = 'fixed';
+      textArea.style.opacity = '0';
       document.body.appendChild(textArea);
       textArea.select();
       document.execCommand('copy');
       document.body.removeChild(textArea);
+      
+      setCopiedStates(prev => ({ ...prev, [comp.id]: true }));
       toast({
-        title: "Link Acquired",
-        description: `Combat zone coordinates for ${comp.name} copied to neural interface.`,
+        title: "⚡ Link Acquired",
+        description: `Combat zone intel for ${comp.name} uploaded to neural interface.`,
       });
+      
+      setTimeout(() => {
+        setCopiedStates(prev => ({ ...prev, [comp.id]: false }));
+      }, 2000);
     }
   };
 
@@ -151,11 +184,9 @@ const CompetitionsSection = () => {
 
   return (
     <section id="competitions" className="py-24 relative overflow-hidden z-10">
-      {/* Tech background elements */}
       <div className="absolute top-0 right-1/4 w-80 h-80 bg-red-900/6 rounded-full blur-3xl animate-morph"></div>
       <div className="absolute bottom-1/4 left-1/3 w-60 h-60 bg-red-800/8 rounded-full blur-2xl animate-float"></div>
       
-      {/* Matrix overlay */}
       <div className="absolute inset-0 opacity-5">
         <div className="w-full h-full bg-gradient-to-br from-red-900 via-transparent to-red-900"></div>
       </div>
@@ -170,7 +201,6 @@ const CompetitionsSection = () => {
           </p>
         </div>
 
-        {/* Enhanced Toggle Tabs */}
         <div className="flex justify-center mb-16">
           <div className="glass-morphism-strong p-3 tech-border circuit-lines">
             <button
@@ -198,7 +228,6 @@ const CompetitionsSection = () => {
           </div>
         </div>
 
-        {/* Enhanced Filters */}
         <div className="flex flex-wrap justify-center gap-6 mb-16">
           <select
             value={selectedGrade}
@@ -223,7 +252,6 @@ const CompetitionsSection = () => {
           </select>
         </div>
 
-        {/* Enhanced Competition Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {filteredCompetitions.length > 0 ? (
             filteredCompetitions.map((comp, index) => (
@@ -232,7 +260,6 @@ const CompetitionsSection = () => {
                 className="glass-morphism-strong interactive-glow group liquid-hover relative overflow-hidden animate-float tech-border circuit-lines p-8"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
-                {/* Smooth corner indicators */}
                 <div className="absolute top-2 left-2 w-4 h-4 bg-red-500/50 rounded-full"></div>
                 <div className="absolute top-2 right-2 w-4 h-4 bg-red-500/50 rounded-full"></div>
                 <div className="absolute bottom-2 left-2 w-4 h-4 bg-red-500/50 rounded-full"></div>
@@ -284,13 +311,22 @@ const CompetitionsSection = () => {
                   </button>
                   <button
                     onClick={() => handleShareCompetition(comp)}
-                    className="interactive-glow group flex items-center justify-center gap-3 glass-morphism-strong rounded-full px-4 py-4 font-medium text-red-100 hover:scale-105 transition-all duration-300 ripple-effect group-hover:bg-gradient-to-r group-hover:from-red-500/20 group-hover:to-red-600/20 tech-border circuit-lines"
+                    className="interactive-glow group flex items-center justify-center gap-3 glass-morphism-strong rounded-full px-4 py-4 font-medium text-red-100 hover:scale-105 transition-all duration-300 ripple-effect group-hover:bg-gradient-to-r group-hover:from-red-500/20 group-hover:to-red-600/20 tech-border circuit-lines relative overflow-hidden"
                   >
-                    <Share size={18} />
+                    {copiedStates[comp.id] ? (
+                      <>
+                        <Check size={18} className="text-green-400" />
+                        <div className="absolute inset-0 bg-green-500/20 animate-pulse rounded-full"></div>
+                      </>
+                    ) : (
+                      <>
+                        <Copy size={18} />
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-500/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                      </>
+                    )}
                   </button>
                 </div>
 
-                {/* Status indicator */}
                 <div className="absolute top-4 right-8 w-2 h-2 bg-red-500/60 rounded-full animate-pulse"></div>
               </div>
             ))
