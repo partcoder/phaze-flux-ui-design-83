@@ -6,36 +6,7 @@ const FestsSection = () => {
   const [copiedStates, setCopiedStates] = useState<Record<string, boolean>>({});
 
   const fests = [
-    {
-      id: 'techfusion2025',
-      name: 'TechFusion 2025',
-      type: 'Squad',
-      collab: 'Delhi Public School',
-      date: 'March 20-22, 2025',
-      deadline: 'March 10, 2025',
-      description: 'A three-day digital warfare event with code combat, cyber-robotics, and innovation battlegrounds',
-      poster: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=400&h=300&fit=crop'
-    },
-    {
-      id: 'innovatetech2025',
-      name: 'InnovateTech Summit',
-      type: 'Solo',
-      collab: 'Ryan International',
-      date: 'April 15, 2025',
-      deadline: 'April 5, 2025',
-      description: 'Individual demonstration of cutting-edge tech weaponry and quantum research protocols',
-      poster: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop'
-    },
-    {
-      id: 'codecarnival2025',
-      name: 'CodeCarnival',
-      type: 'Squad',
-      collab: 'Modern School',
-      date: 'May 8-9, 2025',
-      deadline: 'April 28, 2025',
-      description: 'Competitive programming warfare with algorithm battles and cyber-hackathons',
-      poster: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop'
-    },
+
   ];
 
   const handleJoinRequest = (festName: string) => {
