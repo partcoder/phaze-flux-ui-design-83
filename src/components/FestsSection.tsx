@@ -35,15 +35,15 @@ const FestsSection = () => {
 
   const handleJoinRequest = (festName: string) => {
     const subject = `Request to participate in ${festName}`;
-    const body = `Hi pHaze Team,\n\nI would like to join ${festName}. Please provide me with registration details and requirements.\n\nThanks!`;
-    window.location.href = `mailto:abcd@phaze.tech?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const body = `Hi QuantumGrid Team,\n\nI would like to join ${festName}. Please provide me with registration details and requirements.\n\nThanks!`;
+    window.location.href = `mailto:abcd@quantumgrid.tech?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   return (
     <section id="fests" className="py-20 relative">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent mb-4">
             Tech Fests
           </h2>
           <p className="text-white/70 text-lg">
@@ -55,7 +55,7 @@ const FestsSection = () => {
           {fests.map((fest, index) => (
             <div
               key={fest.name}
-              className="backdrop-blur-md interactive-glow group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/10"
+              className="backdrop-blur-md interactive-glow group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-red-500/10"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Poster Image */}
@@ -69,8 +69,8 @@ const FestsSection = () => {
                 <div className="absolute top-4 right-4">
                   <span className={`px-3 py-1 rounded-full text-sm font-medium ${
                     fest.type === 'Team' 
-                      ? 'bg-emerald-500/20 border border-emerald-500/30 text-emerald-400'
-                      : 'bg-teal-500/20 border border-teal-500/30 text-teal-400'
+                      ? 'bg-red-500/20 border border-red-500/30 text-red-400'
+                      : 'bg-orange-500/20 border border-orange-500/30 text-orange-400'
                   }`}>
                     {fest.type}
                   </span>
@@ -95,7 +95,7 @@ const FestsSection = () => {
                     <Calendar size={16} className="mr-2" />
                     {fest.date}
                   </div>
-                  <div className="flex items-center text-emerald-400 text-sm">
+                  <div className="flex items-center text-red-400 text-sm">
                     <Users size={16} className="mr-2" />
                     Apply by: {fest.deadline}
                   </div>
@@ -103,7 +103,7 @@ const FestsSection = () => {
 
                 <button
                   onClick={() => handleJoinRequest(fest.name)}
-                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-medium py-3 rounded-full hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300"
+                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-red-500 to-orange-500 text-white font-medium py-3 rounded-full hover:shadow-lg hover:shadow-red-500/25 transition-all duration-300"
                 >
                   <Mail size={16} />
                   Request to Join
