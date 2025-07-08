@@ -91,7 +91,7 @@ const CouncilSection = () => {
         {(filter === 'all' || filter === 'leadership') && (
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-yellow-400 mb-8 text-center">Founder</h3>
-            <div className="grid md:grid-cols-1 gap-8 max-w-md mx-auto">
+            <div className="grid md:grid-cols-1 gap-8 max-w-xs mx-auto">
               {councilMembers.founders.map((member, index) => (
                 <div
                   key={member.name}
@@ -124,7 +124,7 @@ const CouncilSection = () => {
         {(filter === 'all' || filter === 'leadership') && (
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-teal-400 mb-8 text-center">Leadership</h3>
-            <div className="grid md:grid-cols-1 gap-8 max-w-md mx-auto">
+            <div className="grid md:grid-cols-1 gap-8 max-w-xs mx-auto">
               {councilMembers.leadership.map((member, index) => (
                 <div
                   key={member.name}
@@ -157,7 +157,7 @@ const CouncilSection = () => {
         {(filter === 'all' || filter === 'leads') && (
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-green-400 mb-8 text-center">Department Leads</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-3xl mx-auto">
               {councilMembers.leads.map((member, index) => (
                 <div
                   key={member.name}
