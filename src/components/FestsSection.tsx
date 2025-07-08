@@ -93,14 +93,14 @@ const FestsSection = () => {
           {fests.map((fest, index) => (
             <div
               key={fest.name}
-              className="glass-morphism-strong interactive-glow group rounded-lg overflow-hidden hover:scale-105 transition-all duration-500 transform hover:shadow-2xl hover:shadow-red-500/20 tech-border circuit-lines relative"
+              className="glass-morphism-strong interactive-glow group overflow-hidden hover:scale-105 transition-all duration-500 transform hover:shadow-2xl hover:shadow-red-500/20 tech-border circuit-lines relative"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              {/* Tech corner indicators */}
-              <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-red-500/50 z-10"></div>
-              <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-red-500/50 z-10"></div>
-              <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-red-500/50 z-10"></div>
-              <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-red-500/50 z-10"></div>
+              {/* Smooth corner indicators */}
+              <div className="absolute top-2 left-2 w-4 h-4 bg-red-500/50 rounded-full z-10"></div>
+              <div className="absolute top-2 right-2 w-4 h-4 bg-red-500/50 rounded-full z-10"></div>
+              <div className="absolute bottom-2 left-2 w-4 h-4 bg-red-500/50 rounded-full z-10"></div>
+              <div className="absolute bottom-2 right-2 w-4 h-4 bg-red-500/50 rounded-full z-10"></div>
               
               {/* Poster Image with overlay */}
               <div className="relative h-48 overflow-hidden">
@@ -113,7 +113,7 @@ const FestsSection = () => {
                 <div className="absolute inset-0 bg-red-900/20"></div>
                 
                 <div className="absolute top-4 right-4">
-                  <span className={`px-3 py-1 rounded-lg text-sm font-medium backdrop-blur-sm ${
+                  <span className={`px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm ${
                     fest.type === 'Squad' 
                       ? 'bg-red-500/30 border border-red-500/50 text-red-300'
                       : 'bg-red-600/30 border border-red-600/50 text-red-200'
@@ -160,14 +160,14 @@ const FestsSection = () => {
                 <div className="flex gap-3">
                   <button
                     onClick={() => handleJoinRequest(fest.name)}
-                    className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-red-600 to-red-500 text-white font-medium py-3 rounded-lg hover:shadow-lg hover:shadow-red-500/25 transition-all duration-300 tech-border circuit-lines"
+                    className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-red-600 to-red-500 text-white font-medium py-3 rounded-full hover:shadow-lg hover:shadow-red-500/25 transition-all duration-300 tech-border circuit-lines"
                   >
                     <Mail size={16} />
                     DEPLOY
                   </button>
                   <button
                     onClick={() => handleShareFest(fest)}
-                    className="flex items-center justify-center gap-2 glass-morphism-strong rounded-lg px-4 py-3 font-medium text-red-100 hover:scale-105 transition-all duration-300 tech-border circuit-lines"
+                    className="flex items-center justify-center gap-2 glass-morphism-strong rounded-full px-4 py-3 font-medium text-red-100 hover:scale-105 transition-all duration-300 tech-border circuit-lines"
                   >
                     <Share size={16} />
                   </button>

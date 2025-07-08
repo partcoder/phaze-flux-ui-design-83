@@ -53,7 +53,7 @@ const HeroSection = () => {
         <div className="mb-20">
           <a
             href="#competitions"
-            className="inline-block px-12 py-5 glass-morphism-strong rounded-lg text-lg font-semibold text-white hover:scale-105 transition-all duration-500 ripple-effect interactive-red-glow group tech-border circuit-lines"
+            className="inline-block px-12 py-5 glass-morphism-strong text-lg font-semibold text-white hover:scale-105 transition-all duration-500 ripple-effect interactive-red-glow group tech-border circuit-lines"
           >
             <span className="bg-gradient-to-r from-red-400 to-red-300 bg-clip-text text-transparent group-hover:from-red-300 group-hover:to-red-400 transition-all duration-300">
               &gt; Initialize Combat Protocols
@@ -71,7 +71,7 @@ const HeroSection = () => {
           ].map((stat, index) => (
             <div
               key={stat.label}
-              className="glass-morphism-strong rounded-lg p-8 liquid-hover interactive-glow group animate-float tech-border circuit-lines"
+              className="glass-morphism-strong liquid-hover interactive-glow group animate-float tech-border circuit-lines p-8"
               style={{ animationDelay: `${index * 200}ms` }}
             >
               <div className="text-3xl md:text-4xl font-bold text-red-400 mb-3 animate-shimmer">
@@ -86,9 +86,9 @@ const HeroSection = () => {
       </div>
 
       {/* Floating tech orbs */}
-      <div className="absolute top-20 left-10 w-6 h-6 bg-red-500/40 rounded-full blur-sm animate-float tech-border"></div>
-      <div className="absolute bottom-32 right-16 w-4 h-4 bg-red-600/50 rounded-full blur-sm animate-float-delayed tech-border"></div>
-      <div className="absolute top-1/3 left-1/4 w-3 h-3 bg-red-700/45 rounded-full blur-sm animate-pulse tech-border"></div>
+      <div className="absolute top-20 left-10 w-6 h-6 bg-red-500/40 rounded-full blur-sm animate-float"></div>
+      <div className="absolute bottom-32 right-16 w-4 h-4 bg-red-600/50 rounded-full blur-sm animate-float-delayed"></div>
+      <div className="absolute top-1/3 left-1/4 w-3 h-3 bg-red-700/45 rounded-full blur-sm animate-pulse"></div>
       
       {/* Matrix code rain effect */}
       <div className="absolute inset-0 pointer-events-none">

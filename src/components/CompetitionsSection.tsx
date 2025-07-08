@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Calendar, Users, Tag, Mail, Share, Terminal, Zap } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
@@ -171,10 +172,10 @@ const CompetitionsSection = () => {
 
         {/* Enhanced Toggle Tabs */}
         <div className="flex justify-center mb-16">
-          <div className="glass-morphism-strong rounded-lg p-3 tech-border circuit-lines">
+          <div className="glass-morphism-strong p-3 tech-border circuit-lines">
             <button
               onClick={() => setActiveTab('interschool')}
-              className={`px-8 py-4 rounded-lg font-medium transition-all duration-500 ripple-effect relative ${
+              className={`px-8 py-4 rounded-full font-medium transition-all duration-500 ripple-effect relative ${
                 activeTab === 'interschool'
                   ? 'bg-gradient-to-r from-red-600 to-red-500 text-white shadow-lg shadow-red-500/25'
                   : 'text-red-100/70 hover:text-red-100 hover:bg-red-900/20'
@@ -185,7 +186,7 @@ const CompetitionsSection = () => {
             </button>
             <button
               onClick={() => setActiveTab('global')}
-              className={`px-8 py-4 rounded-lg font-medium transition-all duration-500 ripple-effect relative ${
+              className={`px-8 py-4 rounded-full font-medium transition-all duration-500 ripple-effect relative ${
                 activeTab === 'global'
                   ? 'bg-gradient-to-r from-red-600 to-red-500 text-white shadow-lg shadow-red-500/25'
                   : 'text-red-100/70 hover:text-red-100 hover:bg-red-900/20'
@@ -202,7 +203,7 @@ const CompetitionsSection = () => {
           <select
             value={selectedGrade}
             onChange={(e) => setSelectedGrade(e.target.value)}
-            className="glass-morphism-strong rounded-lg px-6 py-3 text-red-100 border-0 focus:ring-2 focus:ring-red-500 tech-border circuit-lines"
+            className="glass-morphism-strong rounded-2xl px-6 py-3 text-red-100 border-0 focus:ring-2 focus:ring-red-500 tech-border circuit-lines"
           >
             <option value="all" className="text-black">All Threat Levels</option>
             <option value="9-10" className="text-black">Levels 9-10</option>
@@ -211,7 +212,7 @@ const CompetitionsSection = () => {
           <select
             value={selectedType}
             onChange={(e) => setSelectedType(e.target.value)}
-            className="glass-morphism-strong rounded-lg px-6 py-3 text-red-100 border-0 focus:ring-2 focus:ring-red-500 tech-border circuit-lines"
+            className="glass-morphism-strong rounded-2xl px-6 py-3 text-red-100 border-0 focus:ring-2 focus:ring-red-500 tech-border circuit-lines"
           >
             <option value="all" className="text-black">All Combat Types</option>
             <option value="Hackathon" className="text-black">Cyber Assault</option>
@@ -228,20 +229,20 @@ const CompetitionsSection = () => {
             filteredCompetitions.map((comp, index) => (
               <div
                 key={comp.name}
-                className="glass-morphism-strong interactive-glow group rounded-lg p-8 liquid-hover relative overflow-hidden animate-float tech-border circuit-lines"
+                className="glass-morphism-strong interactive-glow group liquid-hover relative overflow-hidden animate-float tech-border circuit-lines p-8"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
-                {/* Tech corner indicators */}
-                <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-red-500/50"></div>
-                <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-red-500/50"></div>
-                <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-red-500/50"></div>
-                <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-red-500/50"></div>
+                {/* Smooth corner indicators */}
+                <div className="absolute top-2 left-2 w-4 h-4 bg-red-500/50 rounded-full"></div>
+                <div className="absolute top-2 right-2 w-4 h-4 bg-red-500/50 rounded-full"></div>
+                <div className="absolute bottom-2 left-2 w-4 h-4 bg-red-500/50 rounded-full"></div>
+                <div className="absolute bottom-2 right-2 w-4 h-4 bg-red-500/50 rounded-full"></div>
                 
                 <div className="flex items-center justify-between mb-6">
-                  <span className="px-4 py-2 glass-morphism rounded-lg text-red-400 text-sm font-medium group-hover:text-red-300 transition-all duration-300 uppercase tracking-wider">
+                  <span className="px-4 py-2 glass-morphism rounded-full text-red-400 text-sm font-medium group-hover:text-red-300 transition-all duration-300 uppercase tracking-wider">
                     {comp.type}
                   </span>
-                  <span className="px-4 py-2 glass-morphism rounded-lg text-red-300 text-sm font-medium group-hover:text-red-400 transition-all duration-300 uppercase tracking-wider">
+                  <span className="px-4 py-2 glass-morphism rounded-full text-red-300 text-sm font-medium group-hover:text-red-400 transition-all duration-300 uppercase tracking-wider">
                     {comp.domain}
                   </span>
                 </div>
@@ -276,14 +277,14 @@ const CompetitionsSection = () => {
                 <div className="flex gap-3">
                   <button
                     onClick={() => handleEmailParticipation(comp.name)}
-                    className="flex-1 interactive-glow group flex items-center justify-center gap-3 glass-morphism-strong rounded-lg py-4 font-medium text-red-100 hover:scale-105 transition-all duration-300 ripple-effect group-hover:bg-gradient-to-r group-hover:from-red-600/20 group-hover:to-red-500/20 tech-border circuit-lines"
+                    className="flex-1 interactive-glow group flex items-center justify-center gap-3 glass-morphism-strong rounded-full py-4 font-medium text-red-100 hover:scale-105 transition-all duration-300 ripple-effect group-hover:bg-gradient-to-r group-hover:from-red-600/20 group-hover:to-red-500/20 tech-border circuit-lines"
                   >
                     <Mail size={18} />
                     DEPLOY
                   </button>
                   <button
                     onClick={() => handleShareCompetition(comp)}
-                    className="interactive-glow group flex items-center justify-center gap-3 glass-morphism-strong rounded-lg px-4 py-4 font-medium text-red-100 hover:scale-105 transition-all duration-300 ripple-effect group-hover:bg-gradient-to-r group-hover:from-red-500/20 group-hover:to-red-600/20 tech-border circuit-lines"
+                    className="interactive-glow group flex items-center justify-center gap-3 glass-morphism-strong rounded-full px-4 py-4 font-medium text-red-100 hover:scale-105 transition-all duration-300 ripple-effect group-hover:bg-gradient-to-r group-hover:from-red-500/20 group-hover:to-red-600/20 tech-border circuit-lines"
                   >
                     <Share size={18} />
                   </button>

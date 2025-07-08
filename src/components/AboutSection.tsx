@@ -42,14 +42,14 @@ const AboutSection = () => {
           {aboutItems.map((item, index) => (
             <div
               key={item.title}
-              className="glass-morphism-strong rounded-lg p-10 liquid-hover interactive-glow group animate-float tech-border circuit-lines relative"
+              className="glass-morphism-strong liquid-hover interactive-glow group animate-float tech-border circuit-lines relative p-10"
               style={{ animationDelay: `${index * 300}ms` }}
             >
-              {/* Tech corner indicators */}
-              <div className="absolute top-4 left-4 w-3 h-3 border-t-2 border-l-2 border-red-500/50"></div>
-              <div className="absolute top-4 right-4 w-3 h-3 border-t-2 border-r-2 border-red-500/50"></div>
-              <div className="absolute bottom-4 left-4 w-3 h-3 border-b-2 border-l-2 border-red-500/50"></div>
-              <div className="absolute bottom-4 right-4 w-3 h-3 border-b-2 border-r-2 border-red-500/50"></div>
+              {/* Smooth corner indicators */}
+              <div className="absolute top-4 left-4 w-3 h-3 bg-red-500/50 rounded-full"></div>
+              <div className="absolute top-4 right-4 w-3 h-3 bg-red-500/50 rounded-full"></div>
+              <div className="absolute bottom-4 left-4 w-3 h-3 bg-red-500/50 rounded-full"></div>
+              <div className="absolute bottom-4 right-4 w-3 h-3 bg-red-500/50 rounded-full"></div>
               
               <h3 className="text-2xl font-bold text-red-400 mb-6 group-hover:text-red-300 transition-colors duration-300 uppercase tracking-wider">
                 {item.title}
