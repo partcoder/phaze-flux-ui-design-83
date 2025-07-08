@@ -20,87 +20,9 @@ const CompetitionsSection = () => {
         domain: 'AI/ML',
         description: 'Build AI solutions for real-world problems',
         hostedBy: 'Oscorp Inc.'
-      },
-      {
-        id: 'techquizmaster',
-        name: 'TechQuiz Master',
-        type: 'Quiz',
-        grades: '9-10',
-        date: 'Jan 20, 2025',
-        deadline: 'Jan 15, 2025',
-        domain: 'General Tech',
-        description: 'Test your tech knowledge across domains',
-        hostedBy: 'Wayne Enterprises'
-      },
-      {
-        id: 'webdevchallenge',
-        name: 'WebDev Challenge',
-        type: 'Development',
-        grades: '11-12',
-        date: 'Feb 5, 2025',
-        deadline: 'Jan 30, 2025',
-        domain: 'Web Development',
-        description: 'Create stunning web applications',
-        hostedBy: 'Stark Industries'
-      },
-      {
-        id: 'votechhackathon',
-        name: 'Votech Hackathon',
-        type: 'Hackathon',
-        grades: '11-12',
-        date: 'Feb 5, 2025',
-        deadline: 'Jan 30, 2025',
-        domain: 'AI/ML',
-        description: 'Create stunning web applications',
-        hostedBy: 'LexCorp'
-      },
-      {
-        id: 'incorpstudy',
-        name: 'Incorp study',
-        type: 'Case Study',
-        grades: '11-12',
-        date: 'Feb 5, 2025',
-        deadline: 'Jan 30, 2025',
-        domain: 'AI/ML',
-        description: 'Create stunning web applications',
-        hostedBy: 'Queen Industries'
-      },
-      {
-        id: 'osbornchallenge',
-        name: 'Osborn Challenge',
-        type: 'Programming',
-        grades: '9-12',
-        date: 'Feb 5, 2025',
-        deadline: 'Jan 30, 2025',
-        domain: 'AI/ML',
-        description: 'Create stunning web applications',
-        hostedBy: 'Osborn Industries'
-      },
+      }
     ],
-    global: [
-      {
-        id: 'internationalcodinglolympics',
-        name: 'International Coding Olympics',
-        type: 'Programming',
-        grades: '9-12',
-        date: 'Mar 15, 2025',
-        deadline: 'Mar 1, 2025',
-        domain: 'Algorithms',
-        description: 'Compete with coders worldwide',
-        hostedBy: 'Global Tech Foundation'
-      },
-      {
-        id: 'globalaichallenge',
-        name: 'Global AI Challenge',
-        type: 'Case Study',
-        grades: '10-12',
-        date: 'Apr 10, 2025',
-        deadline: 'Mar 25, 2025',
-        domain: 'AI/ML',
-        description: 'Solve AI problems for global impact',
-        hostedBy: 'International AI Consortium'
-      },
-    ]
+    global: []
   };
 
   const filterCompetitions = (comps) => {
@@ -252,7 +174,7 @@ const CompetitionsSection = () => {
           </select>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-1 lg:grid-cols-1 gap-10 max-w-2xl mx-auto">
           {filteredCompetitions.length > 0 ? (
             filteredCompetitions.map((comp, index) => (
               <div
