@@ -25,7 +25,7 @@ const Index = () => {
       <footer className="py-8 text-center border-t border-white/10">
         <div className="max-w-4xl mx-auto px-6">
           <p className="text-white/60 mb-2">
-            2025 QuantumGrid. Rewriting the tech narrative, one phase at a time.
+            2022 QuantumGrid. Rewriting the tech narrative, one phase at a time.
           </p>
           <p className="text-white/40 text-sm">
             Made with ❤️ by the QuantumGrid community
