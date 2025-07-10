@@ -88,7 +88,7 @@ const CodeCrush2025 = () => {
   ];
 
   const handleRegister = () => {
-    window.open('https://forms.google.com', '_blank');
+    window.open('https://docs.google.com/forms/d/e/1FAIpQLScKh_I4krUxp6l6zcsTZ5AvDn6qQ1O_fIpDavKA-ieWrDH7kw/viewform?usp=sharing&ouid=106627497522985931543', '_blank');
   };
 
   const handleDiscordLink = () => {
