@@ -11,7 +11,7 @@ const CouncilSection = () => {
         name: 'Valentine',
         role: 'Founder',
         batch: '',
-        avatar: 'https://t3.ftcdn.net/jpg/01/91/01/78/360_F_191017886_YIfoLtRxVw8PIeAMtR0i4ZDwAyKutVI2.jpg',
+        avatar: 'https://i.ibb.co/WpxXdHnZ/Chat-GPT-Image-Jul-10-2025-02-21-34-PM-1.png',
         bio: 'Visionary leader who started pHaze to revolutionize tech education'
       },
     ],
@@ -20,7 +20,7 @@ const CouncilSection = () => {
         name: 'Valentine',
         role: 'Executive Head',
         batch: '',
-        avatar: 'https://t3.ftcdn.net/jpg/01/91/01/78/360_F_191017886_YIfoLtRxVw8PIeAMtR0i4ZDwAyKutVI2.jpg',
+        avatar: 'https://i.ibb.co/WpxXdHnZ/Chat-GPT-Image-Jul-10-2025-02-21-34-PM-1.png',
         bio: 'Leading pHaze towards new horizons of innovation'
       }
     ],
