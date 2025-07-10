@@ -12,7 +12,7 @@ const CompetitionsSection = () => {
       id: 'codecrush2025',
       name: 'CodeCrush 2025',
       type: 'Hackathon',
-      grades: '13+',
+      grades: '13-19',
       date: 'July 30, 2025',
       deadline: 'July 23, 2025',
       domain: 'Programming',

@@ -8,19 +8,19 @@ const CouncilSection = () => {
   const councilMembers = {
     founders: [
       {
-        name: 'Arnav (Cherry)',
+        name: 'Valentine',
         role: 'Founder',
         batch: '',
-        avatar: 'https://i.ibb.co/NdvsVz7j/Whats-App-Image-2025-06-26-at-11-04-27-PM.jpg',
+        avatar: 'https://t3.ftcdn.net/jpg/01/91/01/78/360_F_191017886_YIfoLtRxVw8PIeAMtR0i4ZDwAyKutVI2.jpg',
         bio: 'Visionary leader who started pHaze to revolutionize tech education'
       },
     ],
     leadership: [
       {
-        name: 'Arnav (Cherry)',
+        name: 'Valentine',
         role: 'Executive Head',
-        batch: '2025-26',
-        avatar: 'https://i.ibb.co/NdvsVz7j/Whats-App-Image-2025-06-26-at-11-04-27-PM.jpg',
+        batch: '',
+        avatar: 'https://t3.ftcdn.net/jpg/01/91/01/78/360_F_191017886_YIfoLtRxVw8PIeAMtR0i4ZDwAyKutVI2.jpg',
         bio: 'Leading pHaze towards new horizons of innovation'
       }
     ],
@@ -28,21 +28,21 @@ const CouncilSection = () => {
       {
         name: 'Winston Hill',
         role: 'Tech Lead',
-        batch: '2025-26',
+        batch: '',
         avatar: '',
         bio: 'Full-stack developer and architecture expert'
       },
       {
         name: 'Lara',
         role: 'Design Lead',
-        batch: '2025-26',
+        batch: '',
         avatar: '',
         bio: 'UI/UX specialist crafting beautiful experiences'
       },
       {
         name: 'James Wilson',
         role: 'Networking Lead',
-        batch: '2026-27',
+        batch: '',
         avatar: '',
         bio: 'Building connections with industry and institutions'
       }
@@ -61,10 +61,10 @@ const CouncilSection = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-4">
-            Council 2025-26
+            The Board
           </h2>
           <p className="text-white/70 text-lg">
-            Meet the amazing team driving pHaze forward
+            Meet the amazing team driving QuantumGrid forward
           </p>
         </div>
 
@@ -144,7 +144,7 @@ const CouncilSection = () => {
                     </div>
                     <h4 className="text-lg font-bold text-white mb-1">{member.name}</h4>
                     <p className="text-cyan-400 font-medium mb-1">{member.role}</p>
-                    <p className="text-white/60 text-sm mb-3">Batch {member.batch}</p>
+
                     <p className="text-white/70 text-sm">{member.bio}</p>
                   </div>
                 </div>
@@ -177,7 +177,7 @@ const CouncilSection = () => {
                     </div>
                     <h4 className="text-md font-bold text-white mb-1">{member.name}</h4>
                     <p className="text-green-400 text-sm font-medium mb-1">{member.role}</p>
-                    <p className="text-white/60 text-xs mb-2">Batch {member.batch}</p>
+
                     <p className="text-white/70 text-xs">{member.bio}</p>
                   </div>
                 </div>

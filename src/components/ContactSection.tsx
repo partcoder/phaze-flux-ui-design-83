@@ -101,7 +101,7 @@ const ContactSection = () => {
               </div>
 
               <div>
-                <label className="block text-white/80 mb-2 font-medium">Got a competition to share? (Optional)</label>
+                <label className="block text-white/80 mb-2 font-medium">Got a competition idea? (Optional)</label>
                 <textarea
                   name="competitionShare"
                   value={formData.competitionShare}
@@ -137,7 +137,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <p className="font-medium">Email</p>
-                    <p className="text-sm text-white/60">contact@quantumgrid.com</p>
+                    <p className="text-sm text-white/60">new info soon...</p>
                   </div>
                 </a>
 
@@ -152,7 +152,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <p className="font-medium">Instagram</p>
-                    <p className="text-sm text-white/60">@quantumgrid</p>
+                    <p className="text-sm text-white/60">coming soon...</p>
                   </div>
                 </a>
 
@@ -167,7 +167,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <p className="font-medium">GitHub</p>
-                    <p className="text-sm text-white/60">github.com/quantumgrid</p>
+                    <p className="text-sm text-white/60">coming soon...</p>
                   </div>
                 </a>
               </div>
