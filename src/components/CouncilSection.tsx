@@ -12,7 +12,7 @@ const CouncilSection = () => {
         role: 'Founder',
         batch: '',
         avatar: 'https://i.ibb.co/WpxXdHnZ/Chat-GPT-Image-Jul-10-2025-02-21-34-PM-1.png',
-        bio: 'Visionary leader who started pHaze to revolutionize tech education'
+        bio: 'Visionary leader who started QuantumGrid to revolutionize tech education'
       },
     ],
     leadership: [
@@ -21,7 +21,7 @@ const CouncilSection = () => {
         role: 'Executive Head',
         batch: '',
         avatar: 'https://i.ibb.co/WpxXdHnZ/Chat-GPT-Image-Jul-10-2025-02-21-34-PM-1.png',
-        bio: 'Leading pHaze towards new horizons of innovation'
+        bio: 'Leading QuantumGrid towards new horizons of innovation'
       }
     ],
     leads: [
@@ -111,7 +111,7 @@ const CouncilSection = () => {
                     </div>
                     <h4 className="text-lg font-bold text-white mb-1">{member.name}</h4>
                     <p className="text-yellow-400 font-medium mb-1">{member.role}</p>
-                    <p className="text-white/60 text-sm mb-3">Founded pHaze in 2025 {member.batch}</p>
+                    <p className="text-white/60 text-sm mb-3">Founded QuantumGrid in 2022 {member.batch}</p>
                     <p className="text-white/70 text-sm">{member.bio}</p>
                   </div>
                 </div>
