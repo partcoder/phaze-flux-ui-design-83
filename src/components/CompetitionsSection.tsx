@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Calendar, Users, Tag, Mail, Share, Copy, Check } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
+import { useNavigate } from 'react-router-dom';
 
 const CompetitionsSection = () => {
   const [copiedStates, setCopiedStates] = useState<Record<string, boolean>>({});
+  const navigate = useNavigate();
 
   const competitions = [
     {
@@ -21,7 +23,7 @@ const CompetitionsSection = () => {
 
   const handleEmailParticipation = (compName: string) => {
     if (compName === 'CodeCrush 2025') {
-      window.open('/codecrush2025', '_blank');
+      navigate('/codecrush2025');
     } else {
       const subject = `Combat Request: ${compName}`;
       const body = `Greetings QuantumGrid Command,\n\nI request deployment to ${compName}. Provide tactical briefing and engagement protocols.\n\nAwaiting orders.`;
